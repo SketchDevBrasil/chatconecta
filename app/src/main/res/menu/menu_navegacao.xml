@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_publico"
+        android:icon="@drawable/ic_forum"
+        android:title="@string/aba_publico" />
+    <item
+        android:id="@+id/nav_conversas"
+        android:icon="@drawable/ic_chat"
+        android:title="@string/aba_conversas" />
+    <item
+        android:id="@+id/nav_pessoas"
+        android:icon="@drawable/ic_people"
+        android:title="@string/aba_pessoas" />
+</menu>

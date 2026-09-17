@@ -1,0 +1,22 @@
+
+# Firebase Android credentials/config
+google-services.json
+app/google-services.json
+
+# Gradle and Android build outputs
+.gradle/
+build/
+**/build/
+local.properties
+
+# Signing credentials
+*.jks
+*.keystore
+
+# Local Genesis agent state and historical reports
+.genesis/agent/
+.genesis/reports/
+.genesis/memory.md
+
+# Dependencias baixadas pelo builder (o Gradle resolve pelas coordenadas do app/build.gradle)
+app/libs/

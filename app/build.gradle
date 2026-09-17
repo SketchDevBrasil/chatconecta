@@ -1,0 +1,43 @@
+plugins {
+    id "com.android.application"
+}
+
+android {
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    namespace "com.my.chatconecta"
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.my.chatconecta"
+        minSdk 23
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    // Coordenadas explicitas e versao fixa: o resolvedor offline do Genesis nao processa
+    // platform()/BoM. As mesmas 6 coordenadas ja estao baixadas em app/libs.
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'com.google.firebase:firebase-auth:23.1.0'
+    implementation 'com.google.firebase:firebase-database:21.0.0'
+}
+
+// Genesis Code: Firebase Google Services
+apply plugin: "com.google.gms.google-services"

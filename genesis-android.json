@@ -1,0 +1,11 @@
+{
+  "type": "android-java",
+  "minSdk": 23,
+  "targetSdk": 36,
+  "packageName": "com.my.chatconecta",
+  "mainActivity": "com.my.chatconecta.SplashActivity",
+  "projectName": "chatconecta",
+  "appName": "ChatConecta",
+  "versionName": "1.0",
+  "versionCode": 1
+}

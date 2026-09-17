@@ -1,0 +1,95 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "limites": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        "$vaga": {
+          ".write": "auth != null && auth.uid === $uid && ($vaga === 'a' || $vaga === 'b' || $vaga === 'c' || $vaga === 'd' || $vaga === 'e') && newData.hasChildren(['id', 'em']) && (!data.exists() || now > data.child('em').val() + 60000)",
+          ".validate": "newData.hasChildren(['id', 'em'])",
+          "id": { ".validate": "newData.isString() && newData.val().length === 20 && newData.val().beginsWith('-')" },
+          "em": { ".validate": "newData.isNumber() && newData.val() === now" },
+          "$outro": { ".validate": false }
+        }
+      }
+    },
+
+    "usuarios": {
+      ".read": "auth != null",
+      ".indexOn": ["nomeBusca"],
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid && newData.exists()",
+        ".validate": "newData.hasChildren(['nome', 'nomeBusca', 'criadoEm'])",
+        "nome": { ".validate": "newData.isString() && newData.val().length >= 2 && newData.val().length <= 40 && newData.val().replace(' ', '').replace('\\n', '').replace('\\t', '').replace('\\r', '').length > 0" },
+        "nomeBusca": { ".validate": "newData.isString() && newData.val().length >= 2 && newData.val().length <= 80" },
+        "recado": { ".validate": "newData.isString() && newData.val().length <= 120" },
+        "criadoEm": { ".validate": "newData.isNumber() && ((!data.exists() && newData.val() === now) || newData.val() === data.val())" },
+        "online": { ".validate": "newData.isBoolean()" },
+        "vistoEm": { ".validate": "newData.isNumber() && newData.val() === now" },
+        "$outro": { ".validate": false }
+      }
+    },
+
+    "chatPublico": {
+      ".read": "auth != null",
+      "$mensagemId": {
+        ".write": "auth != null && !data.exists() && newData.exists() && $mensagemId.length === 20 && $mensagemId.beginsWith('-')",
+        ".validate": "newData.hasChildren(['uid', 'nome', 'texto', 'enviadoEm']) && ((newData.parent().parent().child('limites').child(auth.uid).child('a').child('em').val() === now && newData.parent().parent().child('limites').child(auth.uid).child('a').child('id').val() === $mensagemId) || (newData.parent().parent().child('limites').child(auth.uid).child('b').child('em').val() === now && newData.parent().parent().child('limites').child(auth.uid).child('b').child('id').val() === $mensagemId) || (newData.parent().parent().child('limites').child(auth.uid).child('c').child('em').val() === now && newData.parent().parent().child('limites').child(auth.uid).child('c').child('id').val() === $mensagemId) || (newData.parent().parent().child('limites').child(auth.uid).child('d').child('em').val() === now && newData.parent().parent().child('limites').child(auth.uid).child('d').child('id').val() === $mensagemId) || (newData.parent().parent().child('limites').child(auth.uid).child('e').child('em').val() === now && newData.parent().parent().child('limites').child(auth.uid).child('e').child('id').val() === $mensagemId))",
+        "uid": { ".validate": "newData.val() === auth.uid" },
+        "nome": { ".validate": "newData.isString() && newData.val() === root.child('usuarios').child(auth.uid).child('nome').val()" },
+        "texto": { ".validate": "newData.isString() && newData.val().length <= 500 && newData.val().replace(' ', '').replace('\\n', '').replace('\\t', '').replace('\\r', '').length > 0" },
+        "enviadoEm": { ".validate": "newData.isNumber() && newData.val() === now" },
+        "$outro": { ".validate": false }
+      }
+    },
+
+    "conversas": {
+      "$chatId": {
+        ".read": "auth != null && (($chatId === auth.uid + '_' + $chatId.replace(auth.uid + '_', '') && $chatId.replace(auth.uid + '_', '').length > 0 && root.child('usuarios').child($chatId.replace(auth.uid + '_', '')).exists()) || ($chatId === $chatId.replace('_' + auth.uid, '') + '_' + auth.uid && $chatId.replace('_' + auth.uid, '').length > 0 && root.child('usuarios').child($chatId.replace('_' + auth.uid, '')).exists()))",
+        "mensagens": {
+          "$mensagemId": {
+            ".write": "auth != null && !data.exists() && newData.exists() && $mensagemId.length === 20 && $mensagemId.beginsWith('-') && (($chatId === auth.uid + '_' + $chatId.replace(auth.uid + '_', '') && $chatId.replace(auth.uid + '_', '').length > 0 && root.child('usuarios').child($chatId.replace(auth.uid + '_', '')).exists()) || ($chatId === $chatId.replace('_' + auth.uid, '') + '_' + auth.uid && $chatId.replace('_' + auth.uid, '').length > 0 && root.child('usuarios').child($chatId.replace('_' + auth.uid, '')).exists()))",
+            ".validate": "newData.hasChildren(['uid', 'texto', 'enviadoEm']) && ((newData.parent().parent().parent().parent().child('limites').child(auth.uid).child('a').child('em').val() === now && newData.parent().parent().parent().parent().child('limites').child(auth.uid).child('a').child('id').val() === $mensagemId) || (newData.parent().parent().parent().parent().child('limites').child(auth.uid).child('b').child('em').val() === now && newData.parent().parent().parent().parent().child('limites').child(auth.uid).child('b').child('id').val() === $mensagemId) || (newData.parent().parent().parent().parent().child('limites').child(auth.uid).child('c').child('em').val() === now && newData.parent().parent().parent().parent().child('limites').child(auth.uid).child('c').child('id').val() === $mensagemId) || (newData.parent().parent().parent().parent().child('limites').child(auth.uid).child('d').child('em').val() === now && newData.parent().parent().parent().parent().child('limites').child(auth.uid).child('d').child('id').val() === $mensagemId) || (newData.parent().parent().parent().parent().child('limites').child(auth.uid).child('e').child('em').val() === now && newData.parent().parent().parent().parent().child('limites').child(auth.uid).child('e').child('id').val() === $mensagemId))",
+            "uid": { ".validate": "newData.val() === auth.uid" },
+            "texto": { ".validate": "newData.isString() && newData.val().length <= 500 && newData.val().replace(' ', '').replace('\\n', '').replace('\\t', '').replace('\\r', '').length > 0" },
+            "enviadoEm": { ".validate": "newData.isNumber() && newData.val() === now" },
+            "$outro": { ".validate": false }
+          }
+        },
+        "digitando": {
+          "$uid": {
+            ".write": "auth != null && auth.uid === $uid && (($chatId === auth.uid + '_' + $chatId.replace(auth.uid + '_', '') && $chatId.replace(auth.uid + '_', '').length > 0 && root.child('usuarios').child($chatId.replace(auth.uid + '_', '')).exists()) || ($chatId === $chatId.replace('_' + auth.uid, '') + '_' + auth.uid && $chatId.replace('_' + auth.uid, '').length > 0 && root.child('usuarios').child($chatId.replace('_' + auth.uid, '')).exists()))",
+            ".validate": "newData.isBoolean()"
+          }
+        },
+        "lidoEm": {
+          "$uid": {
+            ".write": "auth != null && auth.uid === $uid && (($chatId === auth.uid + '_' + $chatId.replace(auth.uid + '_', '') && $chatId.replace(auth.uid + '_', '').length > 0 && root.child('usuarios').child($chatId.replace(auth.uid + '_', '')).exists()) || ($chatId === $chatId.replace('_' + auth.uid, '') + '_' + auth.uid && $chatId.replace('_' + auth.uid, '').length > 0 && root.child('usuarios').child($chatId.replace('_' + auth.uid, '')).exists()))",
+            ".validate": "newData.isNumber() && newData.val() === now"
+          }
+        },
+        "$outro": { ".validate": false }
+      }
+    },
+
+    "usuarioConversas": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        "$contatoUid": {
+          ".write": "auth != null && $uid !== $contatoUid && root.child('usuarios').child($uid).exists() && root.child('usuarios').child($contatoUid).exists() && (auth.uid === $uid || (auth.uid === $contatoUid && newData.exists()))",
+          ".validate": "newData.hasChildren(['ultimaMensagem', 'ultimaEm', 'ultimoUid'])",
+          "ultimaMensagem": { ".validate": "newData.isString() && newData.val().length <= 160" },
+          "ultimaEm": { ".validate": "newData.isNumber() && newData.val() === now" },
+          "ultimoUid": { ".validate": "newData.val() === auth.uid" },
+          "naoLidas": {
+            ".read": "auth != null && auth.uid === $contatoUid",
+            ".validate": "newData.isNumber() && newData.val() <= 9999 && ((auth.uid === $uid && newData.val() === 0) || (auth.uid === $contatoUid && ((!data.exists() && newData.val() === 1) || (data.exists() && newData.val() === data.val() + 1))))"
+          },
+          "$outro": { ".validate": false }
+        }
+      }
+    }
+  }
+}

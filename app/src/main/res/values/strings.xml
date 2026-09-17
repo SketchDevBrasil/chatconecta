@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ChatConecta</string>
+    <string name="splash_slogan">Converse. Conecte. Em tempo real.</string>
+    <string name="firebase_nao_configurado">Firebase ainda não configurado.\nPreencha os dados em data/FirebaseInit.java.</string>
+
+    <!-- Login -->
+    <string name="login_slogan">Sua comunidade em um só lugar</string>
+    <string name="login_titulo">Bem-vindo de volta</string>
+    <string name="login_subtitulo">Entre com seu e-mail e senha</string>
+    <string name="hint_email">E-mail</string>
+    <string name="hint_senha">Senha</string>
+    <string name="esqueci_senha">Esqueci minha senha</string>
+    <string name="acao_entrar">Entrar</string>
+    <string name="login_sem_conta">Não tem conta?</string>
+    <string name="login_criar_conta">Criar conta</string>
+    <string name="reset_enviado">Enviamos um link de redefinição para %1$s</string>
+    <string name="reset_erro">Não foi possível enviar o e-mail de redefinição</string>
+
+    <!-- Cadastro -->
+    <string name="criar_titulo">Criar conta</string>
+    <string name="criar_subtitulo">Leva menos de um minuto</string>
+    <string name="hint_nome">Seu nome</string>
+    <string name="hint_confirmar_senha">Confirmar senha</string>
+    <string name="acao_criar_conta">Criar minha conta</string>
+    <string name="criar_ja_tenho">Já tem conta?</string>
+    <string name="criar_entrar">Entrar</string>
+
+    <!-- Erros de formulario -->
+    <string name="erro_nome">Informe um nome com 2 a 40 letras</string>
+    <string name="erro_email">Informe um e-mail válido</string>
+    <string name="erro_senha_vazia">Informe sua senha</string>
+    <string name="erro_senha_curta">A senha precisa ter pelo menos 6 caracteres</string>
+    <string name="erro_senhas_diferentes">As senhas não conferem</string>
+    <string name="erro_login">E-mail ou senha incorretos</string>
+    <string name="erro_email_em_uso">Este e-mail já está em uso</string>
+    <string name="erro_rede">Sem conexão com a internet</string>
+    <string name="erro_muitas_tentativas">Muitas tentativas. Aguarde um pouco e tente de novo</string>
+    <string name="erro_generico">Algo deu errado. Tente novamente</string>
+    <string name="erro_envio">Não foi possível enviar a mensagem</string>
+    <string name="limite_envio">Limite de %1$d mensagens por minuto: aguarde %2$d s</string>
+
+    <!-- Principal -->
+    <string name="aba_publico">Público</string>
+    <string name="aba_conversas">Conversas</string>
+    <string name="aba_pessoas">Pessoas</string>
+    <string name="titulo_publico">Chat público</string>
+    <string name="subtitulo_publico">Converse com toda a comunidade</string>
+    <string name="titulo_conversas">Conversas</string>
+    <string name="subtitulo_conversas">Suas mensagens privadas</string>
+    <string name="titulo_pessoas">Pessoas</string>
+    <string name="subtitulo_pessoas">Encontre alguém para conversar</string>
+    <string name="faixa_pessoas">Pessoas na comunidade</string>
+    <string name="hint_mensagem_publica">Mensagem para todos</string>
+    <string name="publico_vazio">Seja o primeiro a dizer olá 👋</string>
+    <string name="conversas_vazio_titulo">Nenhuma conversa ainda</string>
+    <string name="conversas_vazio_texto">Toque na foto de alguém e escolha \"Abrir chat\" para começar.</string>
+    <string name="encontrar_pessoas">Encontrar pessoas</string>
+    <string name="hint_buscar">Buscar por nome ou recado</string>
+    <string name="pessoas_vazio">Ainda não há outras pessoas por aqui</string>
+    <string name="pessoas_nada_encontrado">Ninguém encontrado para \"%1$s\"</string>
+    <string name="carregando_perfil">Carregando seu perfil, tente de novo em instantes</string>
+    <string name="voce_prefixo">Você: %1$s</string>
+    <string name="usuario">Usuário</string>
+    <string name="meu_perfil">Meu perfil</string>
+
+    <!-- Status -->
+    <string name="status_online">online</string>
+    <string name="status_offline">offline</string>
+    <string name="status_digitando">digitando…</string>
+    <string name="status_visto_hoje">visto por último hoje às %1$s</string>
+    <string name="status_visto_ontem">visto por último ontem às %1$s</string>
+    <string name="status_visto_data">visto por último em %1$s às %2$s</string>
+    <string name="hoje">Hoje</string>
+    <string name="ontem">Ontem</string>
+
+    <!-- Folha de perfil -->
+    <string name="abrir_chat">Abrir chat</string>
+    <string name="editar_meu_perfil">Editar meu perfil</string>
+
+    <!-- Chat privado -->
+    <string name="voltar">Voltar</string>
+    <string name="enviar">Enviar</string>
+    <string name="hint_mensagem">Mensagem</string>
+    <string name="chat_vazio_titulo">Diga olá para %1$s</string>
+    <string name="chat_vazio_texto">As mensagens aparecem aqui em tempo real.</string>
+
+    <!-- Perfil -->
+    <string name="hint_recado">Recado (aparece no seu perfil)</string>
+    <string name="salvar_alteracoes">Salvar alterações</string>
+    <string name="perfil_salvo">Perfil atualizado</string>
+    <string name="perfil_erro">Não foi possível salvar o perfil</string>
+    <string name="sair_da_conta">Sair da conta</string>
+    <string name="sair_confirmar">Deseja sair da sua conta?</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="sair">Sair</string>
+</resources>
